@@ -2,10 +2,10 @@ cask "yaya-dict" do
   version "0.22.1"
   sha256 "fc0e49cea0cae91c850c4b90eed137973bbf08a3e8030597817ae75f31748499"
 
-  url "https://github.com/LaButteRonde/homebrew-murmur/releases/download/v#{version}/Yaya-dict-darwin-arm64-#{version}.zip"
+  url "https://github.com/LaButteRonde/homebrew-yaya-dict/releases/download/v#{version}/Yaya-dict-darwin-arm64-#{version}.zip"
   name "Yaya-dict"
   desc "Dictée vocale 100 % locale pour macOS — Whisper + correction LLM, sans cloud"
-  homepage "https://github.com/LaButteRonde/homebrew-murmur"
+  homepage "https://github.com/LaButteRonde/homebrew-yaya-dict"
 
   depends_on arch: :arm64
 

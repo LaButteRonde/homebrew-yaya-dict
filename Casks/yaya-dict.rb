@@ -1,6 +1,6 @@
-cask "murmur" do
-  version "0.22.0"
-  sha256 "bead6c2aae50d15abd400b1621e358fee9d488e5810b12fc43d15e2d2c0e949d"
+cask "yaya-dict" do
+  version "0.22.1"
+  sha256 "fc0e49cea0cae91c850c4b90eed137973bbf08a3e8030597817ae75f31748499"
 
   url "https://github.com/LaButteRonde/homebrew-murmur/releases/download/v#{version}/Yaya-dict-darwin-arm64-#{version}.zip"
   name "Yaya-dict"

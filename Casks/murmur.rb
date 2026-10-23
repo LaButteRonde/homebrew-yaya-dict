@@ -1,32 +1,40 @@
 cask "murmur" do
-  version "0.5.1"
-  sha256 "2e5d43e0c22f69e2ee3230e9622658c03ab9d88e7c71dbb0e1ff08966e808695"
+  version "0.22.0"
+  sha256 "bead6c2aae50d15abd400b1621e358fee9d488e5810b12fc43d15e2d2c0e949d"
 
-  url "https://github.com/LaButteRonde/homebrew-murmur/releases/download/v#{version}/Murmure-darwin-arm64-#{version}.zip"
-  name "Murmure"
+  url "https://github.com/LaButteRonde/homebrew-murmur/releases/download/v#{version}/Yaya-dict-darwin-arm64-#{version}.zip"
+  name "Yaya-dict"
   desc "Dictée vocale 100 % locale pour macOS — Whisper + correction LLM, sans cloud"
   homepage "https://github.com/LaButteRonde/homebrew-murmur"
 
   depends_on arch: :arm64
 
-  app "Murmure.app"
+  app "Yaya-dict.app"
 
   # Mise à jour sans friction : l'instance en cours est quittée proprement
   # avant le remplacement (TERM en filet), puis relancée par le postflight.
-  uninstall quit:   "com.murmur.app",
-            signal: ["TERM", "com.murmur.app"]
+  # L'ancien identifiant (Murmure, avant 0.22.0) est quitté aussi : au premier
+  # lancement, Yaya-dict déplace ses dossiers et Murmure ne doit plus tourner.
+  uninstall quit:   ["fr.yayadev.yaya-dict", "com.murmur.app"],
+            signal: [["TERM", "fr.yayadev.yaya-dict"], ["TERM", "com.murmur.app"]]
 
   postflight do
     system_command "/usr/bin/xattr",
-      args: ["-dr", "com.apple.quarantine", "#{appdir}/Murmure.app"],
+      args: ["-dr", "com.apple.quarantine", "#{appdir}/Yaya-dict.app"],
       sudo: false
     system_command "/usr/bin/open",
-      args: ["-a", "#{appdir}/Murmure.app"],
+      args: ["-a", "#{appdir}/Yaya-dict.app"],
       sudo: false
   end
 
   zap trash: [
+    "~/Library/Application Support/fr.yayadev.yaya-dict",
+    "~/Library/Caches/fr.yayadev.yaya-dict",
+    "~/Library/WebKit/fr.yayadev.yaya-dict",
+    "~/Library/Preferences/fr.yayadev.yaya-dict.plist",
     "~/Library/Application Support/com.murmur.app",
+    "~/Library/Caches/com.murmur.app",
+    "~/Library/WebKit/com.murmur.app",
     "~/Library/Preferences/com.murmur.app.plist",
   ]
 end

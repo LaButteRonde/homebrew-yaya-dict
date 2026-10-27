@@ -1,6 +1,6 @@
 cask "yaya-dict" do
-  version "0.22.1"
-  sha256 "fc0e49cea0cae91c850c4b90eed137973bbf08a3e8030597817ae75f31748499"
+  version "0.23.0"
+  sha256 "a8909f8ed81a379a4d5a5d2ef70cea839f8eba75c8c6d2eb1da616b10dd11519"
 
   url "https://github.com/LaButteRonde/homebrew-yaya-dict/releases/download/v#{version}/Yaya-dict-darwin-arm64-#{version}.zip"
   name "Yaya-dict"
